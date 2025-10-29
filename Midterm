@@ -1,0 +1,81 @@
+#include <iostream>
+
+using namespace std;
+
+int prouct(int x, int y);
+void swap(int *x, int *y);
+void swapR(int &x, int &y);
+int total;
+
+int product(int x,  int y){
+
+    total = x +y;
+    x = total;
+
+}
+
+
+int main()
+{
+
+int x;
+int y;
+
+
+    cout << "enter your first number ";
+    cin >> x;
+   cout << "enter your second number ";
+     cin>> y;
+
+
+
+   cout << "Before swap call by pointer, value of x :" << x << endl;
+   cout << "Before swap call by pointer, value of y :" << y << endl;
+
+   // calling a function to swap the values.
+   swap(x,y);
+
+   cout << "After swap call by pointer, value of x :" << x << endl;
+   cout << "After swap call by pointer, value of y :" << y << endl;
+
+
+ // calling a function to get product of x+Y  and place the value in x.
+   product(x,y);
+
+    cout << "the product of x+y  is " << product(x,y) << endl;
+
+   cout << "Before call by reference swap, value of x :" << product(x,y) << endl;
+   cout << "Before call by Reference swap, value of y :" << y << endl;
+
+// calling a function to swap the values.
+    swapR(x,y);
+
+   cout << "After call by reference swap, value of x :" << x << endl;
+   cout << "After call by reference swap, value of y :" << y << endl;
+
+}
+
+void swap(int *x, int*y){
+    int temp;
+    temp=*x;
+    *x = *y;
+    *y = temp;
+
+    return;
+
+}
+
+
+
+void swapR(int &x, int &y){
+    int temp;
+    x = total;
+    temp = x;
+    x = y;
+    y = temp;
+
+    return;
+}
+ //function returning the product  of two numbers
+//call by pointer
+// function definition to swap the values.
