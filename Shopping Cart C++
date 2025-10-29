@@ -1,0 +1,261 @@
+#include <iostream>
+
+using namespace std;
+
+string discount;
+
+int many;
+int cart =0;
+int cartem = 0;
+int cofirm =1;
+
+double item;
+double Max;
+double ava;
+double disper;
+double exce = 0;
+double spent;
+double total = 0;
+double itemtax = 0;
+double tax = 0.07;
+double grandtotal;
+double itemdis;
+
+
+
+//welcomes the user
+int Welcome (){
+cout << "You are shopping at Xcontracts enterprise" << endl;
+cout << "\n";
+cout << "What is maximum amount of money you are going to spend?" <<endl;
+cout << "\n";
+cin >> ava;
+cout << "\n";
+cout << "Your current spending amount is: $"<< ava << endl;
+}
+
+
+//shows the user what is able to be purchased
+int shopitems (){
+cout << "\n";
+cout << "This is today's stock" <<endl;
+cout << "\n";
+cout << "What would you like to purchase?" <<endl;
+cout << "1) Roses are $75.00 per 1/2 dozen (25% discout)" <<endl;
+cout << "2) Hair Extensions are $100 per pack (10% discount)" <<endl;
+cout << "3) Male Jeans are $150" <<endl;
+cout << "4) Female jeans are $175 (5% discount)" <<endl;
+cout << "5) Jordans are $200" <<endl;
+cout << "\n";
+cout << "Remember to use the number of which item you would like to select" <<endl;
+cout << "\n";
+cout << "Also entering 0 on the item select screen and on the discount screen will take you to checkout" <<endl;
+}
+
+//This function calculates the item price and how many items are in the cart
+int selecart (){
+cout << "\n";
+cout << "Continue shopping by select an item number 1-5" << endl;
+cout << "\n";
+cin >> item;
+
+//depending on what the user inputs, the item will take on the price of the item they want
+ if (item == 1){
+       item = 75.00;
+
+    //Taking user input to find out how much they want of an item
+    cout << "\n";
+    cout << "How much of this item do you want? " <<endl;
+    cin >> many;
+    item = many * item;
+    itemdis = item;
+    cartem = many ;
+
+        //Calculating how many items are in the user's cart
+        if ( many > 1 ){
+            cart = cart + many;
+         }else{
+         cart = cart + 1;
+        }
+         cout << "You are purchasing " << cartem << " Rose/Roses"<<endl;
+         cout << "\n";
+
+
+
+}else if (item == 2){
+       item = 100.00;
+
+    cout << "\n";
+    cout << "How much of this item do you want? " <<endl;
+    cin >> many;
+    item = many * item;
+    itemdis = item;
+    cartem = many;
+
+        if ( many > 1 ){
+            cart = cart + many;
+        }else{
+        cart = cart + 1;
+        }
+         cout << "\n";
+         cout << "You are purchasing " << cartem << " hair extension/extensions"<<endl;
+         cout << "\n";
+
+}else if (item == 3){
+       item = 150.00;
+
+    cout << "\n";
+    cout << "How much of this item do you want? " <<endl;
+    cin >> many;
+      item = many * item;
+      itemdis = item;
+      cartem = many;
+
+        if ( many > 1 ){
+            cart = cart + many;
+        }else{
+        cart = cart + 1;
+        }
+            cout << "\n";
+            cout << "You are purchasing " << cartem << " Male Jean/Jeans"<<endl;
+            cout << "\n";
+
+
+
+}else if (item == 4){
+       item = 175.00;
+
+    cout << "\n";
+    cout << "How much of this item do you want? " <<endl;
+    cin >> many;
+      item = many * item;
+      itemdis = item;
+      cartem = many;
+        if ( many > 1 ){
+            cart = cart + many;
+        }else{
+            cart = cart + 1;
+        }
+            cout << "\n";
+            cout << "You are purchasing " << cartem << " Female Jean/Jeans"<<endl;
+            cout << "\n";
+
+
+
+}else if (item == 5){
+       item = 200.00;
+
+    cout << "\n";
+    cout << "How much of this item do you want? " <<endl;
+    cin >> many;
+      item = many * item;
+      itemdis = item ;
+      cartem = many;
+
+    if ( many > 1 ){
+            cart = cart + many;
+    }else{
+        cart = cart + 1;
+        }
+        cout << "\n";
+        cout << "You are purchasing " << cartem << " Jordans"<<endl;
+        cout << "\n";
+
+//Ends the shopping
+}else if (item == 0){
+        cofirm = 0;
+
+    }
+}
+
+//Calculates item discounts
+int disitem(){
+ cout << "\n";
+ cout << "Does this item have a discount"<<endl;
+ cin >> discount;
+//uses a string to make the if statement true and calculates the discount
+ if (discount == "yes" ){
+    cout << "\n";
+    cout << "What is the discount percentage?" <<endl;
+    cout << "\n";
+    cout << "When inputting percentage make sure to put the percentage in decimal form  " <<endl;
+    cout << "\n";
+    cout << "Example of discount: 25% = 0.25 or 7% 0.07" << endl;
+    cout << "\n";
+    cin >> disper;
+
+    itemdis = itemdis * disper;
+    item = item - itemdis;
+    itemtax = item;
+    itemtax = itemtax * tax;
+    item = item + itemtax;
+    spent = spent + item;
+    ava = ava - item;
+    exce = item;
+
+
+//if there is no discount, it simply adds the tax
+ }else{
+ itemtax = item;
+ itemtax = itemtax * tax;
+ item = item + itemtax;
+ spent = spent + item;
+ ava = ava - item;
+ exce = item;
+
+ }
+
+}
+
+//checks if the user is in the budget, and if the user goes over the budget, the program will stop them
+int exceava (){
+    if(ava > 0){
+        total = total + item;
+        cout << "\n";
+        cout << "This item/items costs $" << exce <<endl;
+
+}else{
+spent = spent - item;
+ava = ava + item;
+cart = cart - many;
+total = total + 0;
+
+cout << "\n";
+cout << "This item/items costs $" << exce << " and it exceeds available funds, you only have $" << ava << endl;
+cout << "\n";
+cout << " Down below will show your previous amount spent and current balance" <<endl;
+}
+cout << "You have spent $"<< spent <<endl;
+cout << "\n";
+cout << "Your current balance is $" << ava << " You also have " << cart << " item/items in your cart " <<endl;
+cout << "\n";
+}
+
+//Calculates the grand total after purchase has been confirmed
+int finalpur(){
+grandtotal = total;
+cout << "\n";
+cout << "Your grand total is $" << grandtotal <<endl;
+cout << "\n";
+cout << "You have $" << ava << " left and you have " << cart << " items in your cart for checkout" << endl;
+cout << "\n";
+cout << "Thanks for shopping at Xcontracts enterprise, Please come again!" << endl;
+
+}
+
+//The main code calls and executes the other code
+int main ()
+{
+    Welcome();
+    while (cofirm > 0){
+        shopitems();
+        selecart();
+        disitem();
+        exceava ();
+
+    }
+    finalpur();
+}
+
+
+
