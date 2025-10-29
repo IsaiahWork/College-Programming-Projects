@@ -1,0 +1,26 @@
+# include <iostream>
+
+using namespace std;
+
+int num;
+
+cout << " Will you get a hello or a goodbye? " << endl;
+cout << " Enter a number between 45 and 55 to get a hello." endl;
+cout << " If you do not, you will get a goodbye." << endl;
+cout << "" << endl;
+  // checks the boolean condition
+cout << "Enter a Number: ";
+cin >> num;
+cout << "" << endl;
+
+  if(num > 45 && num < 55 ){
+    // if condition is true, then print the following 
+    cout << "Hello " << endl;
+  } else {
+    // if condition is false then print the following 
+    cout << " Goodbye " << endl;
+  }
+
+  return 0;
+
+}
